@@ -1,15 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { DashboardLayoutsComponent } from './layouts/dashboard-layouts/dashboard-layouts.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
-
+import { CommonModule } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -40,21 +30,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { UploadImageComponent } from './pages/upload-image/upload-image.component';
-@NgModule({
-  declarations: [
-    AppComponent,
-    DashboardLayoutsComponent,
-    UploadImageComponent
-  ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule,
 
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -86,8 +67,6 @@ import { UploadImageComponent } from './pages/upload-image/upload-image.componen
     MatTableModule,
     MatSortModule,
     MatPaginatorModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+  ]
 })
-export class AppModule { }
+export class SharedModule { }

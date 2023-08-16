@@ -1,0 +1,37 @@
+<div class="wrapper-dashboard-container">
+    <div class="wrapper-dashboard">
+        <aside class="wrapper-content-sidebar">
+            <div class="wrapper-logo">
+                <div class="wrapper-image">
+                    <img src="./../../../assets/images/new-logo.png" alt="">
+                </div>
+            </div>
+            <div class="wrapper-menu-sidebar">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Personal
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="list-meu">
+                        <div class="each-menu" [routerLink]="['/home/upload-image']" routerLinkActive="router-link-active" >
+                            <mat-icon>person</mat-icon>
+                            <p>Profile</p>
+                        </div>
+                        <div class="each-menu">
+                            <mat-icon>flag</mat-icon>
+                            <p>Personal Data</p>
+                        </div>
+                    </div>
+                  </mat-expansion-panel>
+            </div>
+            <div class="wrapper-footer-sidebar">
+                <div class="title-logout">Logout</div>
+                <mat-icon>arrow_back</mat-icon>
+            </div>
+        </aside>
+        <main class="wrapper-content-item">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>
