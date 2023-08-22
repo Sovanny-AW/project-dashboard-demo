@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+
 import { DashboardLayoutsComponent } from './layouts/dashboard-layouts/dashboard-layouts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
@@ -41,20 +40,35 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { UploadImageComponent } from './pages/upload-image/upload-image.component';
+import { AddUploadImageComponent } from './pages/upload-image/add-upload-image/add-upload-image.component';
+
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+// import {provideStorage,getStorage} from '@angular/fire/storage'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UploadMultiImagesComponent } from './pages/upload-multi-images/upload-multi-images.component';
+import { AddUploadMultiImagesComponent } from './pages/upload-multi-images/add-upload-multi-images/add-upload-multi-images.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardLayoutsComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    AddUploadImageComponent,
+    UploadMultiImagesComponent,
+    AddUploadMultiImagesComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
-
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,

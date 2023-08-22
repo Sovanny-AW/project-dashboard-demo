@@ -16,10 +16,12 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of store?.data">
-                            <td width="30%">
-                                <div class="wrapper-image">
-                                    <img [src]="item?.photoFile?.downloadUrl" alt="">
+                            <td class="flex">
+                                <ng-container *ngFor="let items of item.files" >
+                                <div class="wrapper-image ">
+                                    <img [src]="items?.downloadUrl" alt="">
                                 </div>
+                                 </ng-container>
                             </td>
                         </tr>
                     </tbody>

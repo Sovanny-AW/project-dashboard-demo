@@ -1,0 +1,28 @@
+<div class="wrapper-form-dialog">
+    <div class="wrapper-close-from">
+        <div class="flex-1"></div>
+        <div class="close-btn" (click)="closeDialog()">
+            <mat-icon>close</mat-icon>
+        </div>
+    </div>
+    <div class="wrapper-content-form">
+        <div class="wrapper-multi-content-image">
+            <div class="wrapper-multi-content" *ngFor='let preview of previews; let i = index' >
+                <div class="wrapper-multi-image"  >
+                    <img  [src]="preview?.url" *ngIf="preview">
+                </div>
+                <a mat-button mat-icon-button (click)="_removeFile(i,preview)">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </div>
+        </div>
+        <div class="wrapper-button">
+            <div class="btn-choose">
+                <input type="file" #photoFile multiple (change)="selectFile($event)">
+            </div>
+            <div class="btn-submit">
+                <button mat-raised-button color="primary" (click)="upload()">Upload Image</button>
+            </div>
+        </div>
+    </div>
+</div>

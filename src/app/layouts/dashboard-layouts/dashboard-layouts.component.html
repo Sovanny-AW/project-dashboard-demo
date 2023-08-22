@@ -14,13 +14,13 @@
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div class="list-meu">
-                        <div class="each-menu" [routerLink]="['/home/upload-image']" routerLinkActive="router-link-active" >
+                        <div class="each-menu" [routerLink]="['/home/upload-image']" routerLinkActive="active" >
                             <mat-icon>person</mat-icon>
-                            <p>Profile</p>
+                            <p>Upload Images</p>
                         </div>
-                        <div class="each-menu">
+                        <div class="each-menu" [routerLink]="['/home/upload-multi-images']"  routerLinkActive="active" >
                             <mat-icon>flag</mat-icon>
-                            <p>Personal Data</p>
+                            <p>Upload Multiple Image</p>
                         </div>
                     </div>
                   </mat-expansion-panel>

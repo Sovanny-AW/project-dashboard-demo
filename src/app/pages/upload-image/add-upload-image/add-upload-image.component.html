@@ -1,0 +1,26 @@
+<div class="wrapper-form-dialog">
+    <div class="wrapper-close-from">
+        <div class="flex-1"></div>
+        <div class="close-btn" (click)="closeDialog()">
+            <mat-icon>close</mat-icon>
+        </div>
+    </div>
+
+    <div class="wrapper-content-form">
+        <div class="wrapper-content">
+            <div class="wrapper-image">
+
+                <img [src]="url" alt="" *ngIf="url">
+
+            </div>
+        </div>
+        <div class="wrapper-button">
+            <div class="btn-choose">
+                <input #photoFile type="file" accept="image/*" (change)="selectFile($event)">
+            </div>
+            <div class="btn-submit">
+                <button mat-raised-button color="primary" (click)="upload()">Upload Image</button>
+            </div>
+        </div>
+    </div>
+</div>
