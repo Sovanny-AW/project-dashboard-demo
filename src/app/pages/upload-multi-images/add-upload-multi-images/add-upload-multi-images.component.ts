@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Gallary } from 'src/app/models/file-upload';
 import { UploadMultiImageStore } from 'src/app/stores/uploadMultiImage.store';
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 @Component({
   selector: 'app-add-upload-multi-images',
   templateUrl: './add-upload-multi-images.component.html',
@@ -22,22 +22,22 @@ export class AddUploadMultiImagesComponent implements OnInit {
   task?: AngularFireUploadTask
   percentages?: Observable<number>
 
-  title? : AbstractControl
+  title?: AbstractControl
   constructor(
     public dialogRef: MatDialogRef<AddUploadMultiImagesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private db: AngularFireDatabase,
     private snackBar: MatSnackBar,
     public store: UploadMultiImageStore,
-    public storage : AngularFireStorage,
-    private fb : FormBuilder,
+    public storage: AngularFireStorage,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
   }
   selectFile(event: any) {
     this.previews = []
-    if (event&& event.target.files.length > 0) {
+    if (event && event.target.files.length > 0) {
       for (let i = 0; i < event.target.files.length; i++) {
         const numberFiles = event.target.files[i]
         this.SELECTED_FILES.push(numberFiles)
@@ -54,37 +54,42 @@ export class AddUploadMultiImagesComponent implements OnInit {
       }
     }
   }
-  async upload(){
-    const item = this.data;
-    const key = this.db.createPushId()
-    const data: any = {
-      key : key,
-      created_at : new Date(),
-      files: item ? item.files : [],
-      isDelete: false
-
+  async upload() {
+    if (!this.previews || this.SELECTED_FILES && this.previews.length || this.SELECTED_FILES.length === 0) {
+      alert("Please select any image to upload.")
     }
-    if (this.SELECTED_FILES.length > 0) {
-      const selectedFiles: any[] = item?item.files || []: [];
-      const files = await this.store.upload(this.SELECTED_FILES);
+    else {
+      const item = this.data;
+      const key = this.db.createPushId()
+      const data: any = {
+        key: key,
+        created_at: new Date(),
+        files: item ? item.files : [],
+        isDelete: false
 
-      data.files = selectedFiles.concat(files);
-      this.START_UPLOAD = false;
+      }
+      if (this.SELECTED_FILES.length > 0) {
+        const selectedFiles: any[] = item ? item.files || [] : [];
+        const files = await this.store.upload(this.SELECTED_FILES);
+
+        data.files = selectedFiles.concat(files);
+        this.START_UPLOAD = false;
+      }
+      this.store.save(data, (success: any, res: any) => {
+        if (success) {
+          this.SELECTED_FILES = [];
+          this.snackBar.open('Image has been uploaded', 'Done', { duration: 3000 })
+          this.dialogRef.close()
+        }
+        else {
+          alert(res)
+        }
+      })
     }
-    this.store.save(data,(success:any,res:any)=>{
-      if(success){
-        this.SELECTED_FILES = [];
-        this.snackBar.open('Image has been uploaded', 'Done',{duration:3000})
-        this.dialogRef.close()
-      }
-      else{
-        alert(res)
-      }
-    })
   }
-  _removeFile(index:any, file: any) {
+  _removeFile(index: any, file: any) {
     this.SELECTED_FILES = this.SELECTED_FILES.filter(m => m.name !== file.name);
-    this.previews = this.previews.filter( m => m !== this.previews[index])
+    this.previews = this.previews.filter(m => m !== this.previews[index])
   }
 
   closeDialog() {

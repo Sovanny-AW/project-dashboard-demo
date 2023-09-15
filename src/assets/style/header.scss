@@ -1,0 +1,38 @@
+.wrapper-header-container{
+    width: 100%;
+    box-shadow: 1px 1px 1px 1px #ddd;
+    .wrapper-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px 50px;
+        padding: 10px 0;
+        .wrapper-logo{
+            h1{
+                color: var(--title);
+            }
+        }
+        .flex-1{
+            flex: 1;
+        }
+        .wrapper-container-menu{
+            .wrapper-menu{
+                ul{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    li{
+                        a{
+                            padding: 0 20px;
+                            color: var(--primaryColor)
+                           
+                        }
+                        .active{
+                            color: var(--title);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

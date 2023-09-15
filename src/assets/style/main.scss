@@ -177,11 +177,13 @@
 
                             .wrapper-image {
                                 width: 200px;
+                                height: 160px;
                                 padding: 20px;
 
                                 img {
                                     width: 100%;
-                                    object-fit: contain;
+                                    height: 100%;
+                                    object-fit: cover;
                                     border-radius: 10px;
                                 }
                             }
@@ -271,14 +273,14 @@
                 margin: 10px;
                 border: 4px dashed #ddd;
                 padding: 10px;
-                height: 150px;
 
                 .wrapper-multi-image {
-
+                    width: 100%;
+                    height: 200px;
                     img {
                         width: 100%;
                         height: 100%;
-                        object-fit: contain;
+                        object-fit: cover;
                     }
                 }
             }

@@ -51,6 +51,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadMultiImagesComponent } from './pages/upload-multi-images/upload-multi-images.component';
 import { AddUploadMultiImagesComponent } from './pages/upload-multi-images/add-upload-multi-images/add-upload-multi-images.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { LayoutHomeComponent } from './layouts/layout-home/layout-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +62,11 @@ import { AddUploadMultiImagesComponent } from './pages/upload-multi-images/add-u
     UploadImageComponent,
     AddUploadImageComponent,
     UploadMultiImagesComponent,
-    AddUploadMultiImagesComponent
+    AddUploadMultiImagesComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    LayoutHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +107,7 @@ import { AddUploadMultiImagesComponent } from './pages/upload-multi-images/add-u
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -19,8 +19,9 @@ export class UploadMultiImagesComponent implements OnInit {
     this.store.fetchImage()
   }
 
-  create(){
+  create(item?:any){
     const dialogRef = this.dailog.open(AddUploadMultiImagesComponent,{
+      data : {item: item},
       width: '760px',
       height: '96vh',
       role: 'dialog'

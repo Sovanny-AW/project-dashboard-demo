@@ -1,5 +1,11 @@
 @import './assets/style/app.scss';
 /* You can add global styles to this file, and also import other style files */
+*{
+    --primaryColor: #5c6b73;
+    --primarySubTitle : #c2dfe3;
+    --title : #253237;
+    --background : #ececec;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
